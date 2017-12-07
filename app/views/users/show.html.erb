@@ -5,7 +5,9 @@
       <p><%= message %></p>
     <% end %>
   <% end %>
-  email: <%= form.text_field :email %>
-  password: <%= form.text_field :password %>
+  First Name <%= form.text_field :first_name %>
+  Last Name <%= form.text_field :last_name %>
+  E-mail: <%= form.email_field :email %>
+  Password: <%= form.password_field :password %>
   <%= form.submit %>
 <% end %>
