@@ -1,0 +1,11 @@
+<h2>Make a new account</h2>
+<%= form_for :user, url: [:user], method: "POST" do |form| %>
+  <% if @user.errors.full_messages.length > 0 %>
+    <% @user.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  <% end %>
+  email: <%= form.text_field :email %>
+  password: <%= form.text_field :password %>
+  <%= form.submit %>
+<% end %>
