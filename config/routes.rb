@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :show]
 
-  resource :user, only: [:show, :create, :destroy]
+  resource :user, only: [:show, :create, :destroy] do
+    resources :orders, only: [:index]
+  end
 
   resource :login, only: [:show, :create]
 

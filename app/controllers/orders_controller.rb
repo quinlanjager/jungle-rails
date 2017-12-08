@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  def index
+    @orders = @user.orders
+  end
 
   def show
     @order = Order.find(params[:id])
@@ -48,6 +51,7 @@ class OrdersController < ApplicationController
       email: params[:stripeEmail],
       total_cents: cart_total,
       stripe_charge_id: stripe_charge.id, # returned by stripe
+      user_id: @user.id || nil
     )
     cart.each do |product_id, details|
       if product = Product.find_by(id: product_id)

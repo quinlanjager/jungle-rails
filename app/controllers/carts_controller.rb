@@ -1,7 +1,6 @@
 class CartsController < ApplicationController
 
   def show
-    @user || = User.new
   end
 
   def add_item

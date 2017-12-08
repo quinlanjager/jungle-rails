@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   def show
-    @user ||= User.new
+    @user = User.new
   end
 
-  # post route for making a new user
   def create
     @user = create_user
 
@@ -30,6 +29,11 @@ class UsersController < ApplicationController
     redirect_to "/"
   end
 
+  def orders
+    orders = @user.orders
+
+  end
+
   private
     # create and return a new user
     def create_user
@@ -38,5 +42,5 @@ class UsersController < ApplicationController
       user.password = user_params[:password]
       user
     end
-    
+
 end
