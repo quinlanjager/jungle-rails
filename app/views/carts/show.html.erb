@@ -5,9 +5,12 @@
   </header>
 
   <% if cart.length == 0 %>
-    <p>Your car is empty. <%= link_to "Keep shopping!", [:root] %></p>
+    <div class="panel panel-default cart-empty">
+      <h3>Hey! Your cart is empty.</h3>
+      <%= link_to "Add some stuff", [:root], class: 'btn btn-primary btn-lg' %>
+    </div>
   <% else %>
-      <div class="panel panel-default items">
+    <div class="panel panel-default items">
         <table class="table table-bordered">
           <thead>
             <tr>
