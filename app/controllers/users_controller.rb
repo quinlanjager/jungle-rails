@@ -3,27 +3,6 @@ class UsersController < ApplicationController
     @user ||= User.new
   end
 
-  def login
-    if @user
-      redirect_to "/"
-      return
-    end
-    @user = User.new
-  end
-
-  # post route for logging in
-  def create_session
-    @user = find_user
-    if @user == nil or @user == false
-      @user = User.new
-      @user.errors.add(:base, "E-mail or password did not match our records")
-      render :login
-      return
-    end
-    session[:user_id] = @user.id
-    redirect_to "/"
-  end
-
   # post route for making a new user
   def create
     @user = create_user
@@ -59,10 +38,5 @@ class UsersController < ApplicationController
       user.password = user_params[:password]
       user
     end
-
-    # find a user, for logging in.
-    def find_user
-      user_params = params.require(:user).permit(:email, :password)
-      User.find_by(email: user_params[:email]).try(:authenticate, user_params[:password])
-    end
+    
 end
