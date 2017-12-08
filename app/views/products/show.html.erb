@@ -31,6 +31,12 @@
   <h2>Reviews</h2>
 
   <%= form_for :review, url: [@product, @review], method: "POST", class: "form-horizontal" do |form| %>
+    <% if alert %>
+      <div class="alert alert-warning">
+        <label><%= alert %></label>
+      </div>
+    <% end %>
+
     <div class="form-group">
       <label>Rating</label>
       <%= form.number_field :rating, class: "form-control" %>
@@ -43,11 +49,15 @@
   <% end %>
 
   <% @reviews.each do |review| %>
-    <article>
-      <h4>Rating: <%=review.rating %></h4>
-      <p><strong><%= review.user ? review.user.first_name : "Anonymous" %></strong> says:</p>
-      <p><%= review.description %>
-    </article>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Rating: <% review.rating.to_i.times do %><span class="glyphicon glyphicon-star"></span><% end %></h4>
+      </div>
+      <div class="panel-body">
+        <p><strong><%= review.user ? review.user.first_name : "Anonymous" %></strong> says:</p>
+        <p><%= review.description %>
+      </div>
+    </div>
   <% end %>
 
 </section>
