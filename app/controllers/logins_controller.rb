@@ -1,7 +1,7 @@
-class LoginsController < ApplicationController
-
+class LoginsController < AccountCreationAndLoginController
+  
   def show
-    @user ? redirect_to("/") : @user = User.new
+    @user = User.new
   end
 
   # post route for logging in

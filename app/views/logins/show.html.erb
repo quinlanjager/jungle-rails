@@ -1,5 +1,6 @@
 <h2>Login</h2>
-<%= form_for :user, url: [:login], class: "form-horizontal", method: "POST" do |form| %>
+<hr />
+<%= form_for :user, url: [:login], method: "POST" do |form| %>
   <% if @user.errors.full_messages.length > 0 %>
     <%= render "errors"%>
   <% end %>
@@ -14,5 +15,6 @@
     <label>Password</label>
     <%= form.password_field :password, class: "form-control" %>
   </div>
-  <%= form.submit "Login"%>
+  <%= form.submit "Login", class: "btn"%>
+  <p class="form-footnote"><strong>Don't have an account? <%= link_to "Create one!", :user %></strong></p>
 <% end %>

@@ -1,4 +1,6 @@
-class UsersController < ApplicationController
+class UsersController < AccountCreationAndLoginController
+  skip_before_filter :stop_logged_in_users, only: [:destroy]
+  
   def show
     @user = User.new
   end
