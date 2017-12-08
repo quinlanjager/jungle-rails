@@ -17,6 +17,10 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
+      if session[:user_id]
+        user = User.find(session[:user_id])
+        UserMailer.order_receipt(user, order).deliver_later
+      end
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
