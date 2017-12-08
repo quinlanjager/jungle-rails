@@ -1,6 +1,7 @@
 <footer class="product-reviews">
   <h2>Reviews</h2>
   <hr />
+
   <% if @reviews.length == 0 %>
     <div class="panel panel-default review-panel">
       <div class="panel-body">
@@ -19,7 +20,7 @@
         </div>
         <% if review.user_id == session[:user_id] %>
           <div class='panel-footer'>
-            <%= link_to "Delete Review", review, class:"btn btn-danger", method: "DELETE" %>
+            <%= link_to "Delete Review", review, class:"btn btn-danger", method: "DELETE", data: {confirm: "Are you sure? This cannot be reversed."} %>
           </div>
         <% end %>
       </div>
