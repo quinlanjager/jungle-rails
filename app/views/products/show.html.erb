@@ -30,8 +30,24 @@
 
   <h2>Reviews</h2>
 
+  <%= form_for :review, url: [@product, @review], method: "POST", class: "form-horizontal" do |form| %>
+    <div class="form-group">
+      <label>Rating</label>
+      <%= form.number_field :rating, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label>description</label>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+    <%= form.submit class: "btn" %>
+  <% end %>
+
   <% @reviews.each do |review| %>
-    <h3><%=review.rating %></h3>
+    <article>
+      <h4>Rating: <%=review.rating %></h4>
+      <p><strong><%= review.user ? review.user.first_name : "Anonymous" %></strong> says:</p>
+      <p><%= review.description %>
+    </article>
   <% end %>
 
 </section>
