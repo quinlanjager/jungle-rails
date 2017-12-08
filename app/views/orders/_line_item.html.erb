@@ -1,0 +1,13 @@
+<article class="product">
+  <header>
+    <%= link_to line_item.product do %>
+      <%= image_tag line_item.product.image.thumb, alt: line_item.product.name %>
+      <h4><%= line_item.product.name %></h4>
+    <% end %>
+  </header>
+  <p class="description">
+    <%= line_item.product.description %>
+  </p>
+  <p><%= line_item.quantity %></p>
+  <p><%= humanized_money_with_symbol line_item.product.price %></p>
+</article>
