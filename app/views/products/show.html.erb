@@ -1,5 +1,4 @@
 <section class="products-show">
-
   <header class="page-header">
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
@@ -27,49 +26,5 @@
     </div>
 
   </article>
-
-  <footer class="product-reviews">
-    <h2>Reviews</h2>
-    <hr />
-    <% if @reviews.length == 0 %>
-      <div class="panel panel-default review-panel">
-        <div class="panel-body">
-          <h4>Looks like there's no reviews yet! Log in to write one.</h4>
-        </div>
-      </div>
-    <% else %>
-      <% @reviews.each do |review| %>
-        <div class="panel panel-default review-panel">
-          <div class="panel-heading">
-            <h4>Rating: <% review.rating.to_i.times do %><span class="glyphicon glyphicon-star"></span><% end %></h4>
-          </div>
-          <div class="panel-body">
-            <p><strong><%= review.user ? review.user.first_name : "Anonymous" %></strong> says:</p>
-            <p><%= review.description %></p>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-
-    <% if session[:user_id] %>
-      <h3>Tell us your thoughts!</h3>
-      <%= form_for :review, url: [@product, @review], html: {class: "review-form"}, method: "POST" do |form| %>
-      <% if alert %>
-      <div class="alert alert-warning">
-        <label><%= alert %></label>
-      </div>
-      <% end %>
-
-      <div class="form-group">
-        <label>Rating (out of 5)</label>
-        <%= form.number_field :rating, class: "form-control", min:"0", max:"5" %>
-      </div>
-      <div class="form-group">
-        <label>description</label>
-        <%= form.text_area :description, class: "form-control" %>
-      </div>
-      <%= form.submit class: "btn" %>
-      <% end %>
-    <% end %>
-  </footer>
+  <%= render "reviews" %>
 </section>

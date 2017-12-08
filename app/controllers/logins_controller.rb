@@ -1,5 +1,5 @@
 class LoginsController < AccountCreationAndLoginController
-  
+
   def show
     @user = User.new
   end
@@ -25,7 +25,7 @@ class LoginsController < AccountCreationAndLoginController
 
 
     session[:user_id] = @user.id
-    redirect_to "/"
+    redirect_to "/", notice: "Login successful!"
   end
 
 end

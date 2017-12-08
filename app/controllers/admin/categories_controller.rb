@@ -18,6 +18,12 @@ class Admin::CategoriesController < SecureController
     end
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to "/admin", notice: "Category was sucessfully deleted."
+  end
+
   private
     def category_params
       params.require(:category).permit(:name)

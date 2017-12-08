@@ -22,12 +22,16 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to Product.find(@review.product_id), notice: "Review deleted succesfully"
   end
 
   private
     def review_params
       params.require(:review).permit(:rating, :description)
     end
+
     def stop_anon
       if not @user
         redirect_to '/login', alert: "Please login before posting a review."

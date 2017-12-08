@@ -1,6 +1,6 @@
 class UsersController < AccountCreationAndLoginController
   skip_before_filter :stop_logged_in_users, only: [:destroy]
-  
+
   def show
     @user = User.new
   end
@@ -23,12 +23,12 @@ class UsersController < AccountCreationAndLoginController
 
     @user.save
     session[:user_id] = @user.id
-    redirect_to "/"
+    redirect_to "/", notice: "Account succesfully created, welcome!"
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to "/"
+    redirect_to "/", notice: "Logged out succesfully!"
   end
 
   def orders
