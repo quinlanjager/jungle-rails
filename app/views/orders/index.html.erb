@@ -1,3 +1,20 @@
-<!-- @TODO Make a table here of all the orders.-->
-<% for @orders.each do |order| %>
-<% end %>
+<table class="table table-bordered">
+  <tr>
+    <th>Order Details</th>
+    <th>Items</th>
+    <th>Total</th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <% order.line_items.each do |line_item| %>
+      <td>
+        <ul>
+            <li><%= line_item.product.name %></li>
+        </ul>
+      </td>
+      <% end %>
+      <td><%= humanized_money_with_symbol order.total %></td>
+    </tr>
+  <% end %>
+</table>
