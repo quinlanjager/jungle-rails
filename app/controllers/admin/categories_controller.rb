@@ -1,4 +1,3 @@
-require_relative "secure_controller"
 class Admin::CategoriesController < SecureController
 
   def index
