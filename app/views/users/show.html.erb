@@ -1,13 +1,17 @@
-<h2>Make a new account</h2>
-<%= form_for :user, url: [:user], method: "POST" do |form| %>
-  <% if @user.errors.full_messages.length > 0 %>
-    <% @user.errors.full_messages.each do |message| %>
-      <p><%= message %></p>
+<% if not session[:user_id] %>
+  <h2>Make a new account</h2>
+  <%= form_for :user, url: [:user], method: "POST" do |form| %>
+    <% if @user.errors.full_messages.length > 0 %>
+      <% @user.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
     <% end %>
+    First Name <%= form.text_field :first_name %>
+    Last Name <%= form.text_field :last_name %>
+    E-mail: <%= form.email_field :email %>
+    Password: <%= form.password_field :password %>
+    <%= form.submit %>
   <% end %>
-  First Name <%= form.text_field :first_name %>
-  Last Name <%= form.text_field :last_name %>
-  E-mail: <%= form.email_field :email %>
-  Password: <%= form.password_field :password %>
-  <%= form.submit %>
+<% else %>
+  <p>Logged in</p>
 <% end %>

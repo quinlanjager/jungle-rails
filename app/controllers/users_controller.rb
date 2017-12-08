@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   def show
-    @user = User.new
+    @user ||= User.new
   end
 
   def login
+    if @user
+      redirect_to "/"
+      return
+    end
     @user = User.new
   end
 
@@ -42,7 +46,7 @@ class UsersController < ApplicationController
     redirect_to "/"
   end
 
-  def logout
+  def destroy
     session[:user_id] = nil
     redirect_to "/"
   end

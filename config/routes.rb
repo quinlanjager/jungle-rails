@@ -12,10 +12,9 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :show]
 
-  resource :user, only: [:show, :create] do
+  resource :user, only: [:show, :create, :destroy] do
     get :login
     post :create_session
-    delete :logout
   end
 
   namespace :admin do
