@@ -1,4 +1,14 @@
-<h1>Thank you for your order! Here's your receipt for <%= @order.id %></h1>
+<h1>Thank you for your order! Here's your receipt for order <%= @order.id %></h1>
 <hr/>
-<%= render partial: "line_item", collection: @line_items %>
-<p>Total: <%= humanized_money_with_symbol @order.total %></p>
+<table>
+  <tr>
+    <th colspan="2">Product</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
+  </tr>
+  <%= render partial: "line_item", collection: @line_items %>
+  <tr>
+    <th colspan="3">Total:</th>
+    <th><%= humanized_money_with_symbol @order.total %></th>
+  </tr>
+</table>
