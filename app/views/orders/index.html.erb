@@ -1,3 +1,4 @@
+<h1>Your active orders</h1>
 <table class="table table-bordered">
   <tr>
     <th>Order Details</th>
@@ -6,13 +7,17 @@
   </tr>
   <% @orders.each do |order| %>
     <tr>
-      <td><%= order.id %></td>
-      <% order.line_items.each do |line_item| %>
       <td>
-        <ul>
-            <li><%= line_item.product.name %></li>
-        </ul>
+        <%= link_to order do %>
+          <%= order.id %>
+        <% end %>
       </td>
+      <% order.line_items.each do |line_item| %>
+        <td>
+          <ul>
+            <li><%= line_item.product.name %></li>
+          </ul>
+        </td>
       <% end %>
       <td><%= humanized_money_with_symbol order.total %></td>
     </tr>
