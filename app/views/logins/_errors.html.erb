@@ -1,0 +1,5 @@
+<div class="alert alert-danger">
+<% @user.errors.full_messages.each do |message| %>
+    <label><%= message %></label>
+<% end %>
+</div>

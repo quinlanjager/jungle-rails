@@ -30,7 +30,7 @@
 
   <h2>Reviews</h2>
 
-  <%= form_for :review, url: [@product, @review], method: "POST", class: "form-horizontal" do |form| %>
+  <%= form_for :review, url: [@product, @review], method: "POST", class: "form-horizontal review-form" do |form| %>
     <% if alert %>
       <div class="alert alert-warning">
         <label><%= alert %></label>
@@ -38,7 +38,7 @@
     <% end %>
 
     <div class="form-group">
-      <label>Rating</label>
+      <label>Rating (out of 5)</label>
       <%= form.number_field :rating, class: "form-control" %>
     </div>
     <div class="form-group">

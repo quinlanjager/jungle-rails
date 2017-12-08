@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_filter :stop_anon
+
   def create
     product_id = params[:product_id]
 
@@ -25,5 +27,10 @@ class ReviewsController < ApplicationController
   private
     def review_params
       params.require(:review).permit(:rating, :description)
+    end
+    def stop_anon
+      if not @user
+        redirect_to '/login', alert: "Please login before posting a review."
+      end
     end
 end
