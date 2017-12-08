@@ -28,4 +28,10 @@
 
   </article>
 
+  <h2>Reviews</h2>
+
+  <% @reviews.each do |review| %>
+    <h3><%=review.rating %></h3>
+  <% end %>
+
 </section>
