@@ -1,10 +1,13 @@
 class OrdersController < ApplicationController
 
   def show
-    @product_sum = 0
     @order = Order.find(params[:id])
-    @products = Product.joins("LEFT JOIN line_items ON product_id = products.id").where("line_items.order_id = ?", params[:id])
+    @products = Product.select("products.id, line_items.quantity, products.name, products.image, description, products.price_cents")
+                       .joins("LEFT OUTER JOIN line_items ON product_id = products.id")
+                       .where("line_items.order_id = ?", params[:id])
+
     # get product sum
+    @product_sum = 0
     @products.each do |product|
       @product_sum += product.price
     end
