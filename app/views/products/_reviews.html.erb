@@ -12,7 +12,7 @@
     <% @reviews.each do |review| %>
       <div class="panel panel-default review-panel">
         <div class="panel-heading">
-          <h4>Rating: <% review.rating.to_i.times do %><span class="glyphicon glyphicon-star"></span><% end %></h4>
+          <h4>Rating: <% review.rating.to_i.times { |i| %><span class="glyphicon glyphicon-star"></span><% } %></h4>
         </div>
         <div class="panel-body">
           <p><strong><%= review.user ? review.user.first_name : "Anonymous" %></strong> says:</p>
