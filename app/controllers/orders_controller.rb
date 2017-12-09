@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
       empty_cart!
 
       # send email if a user is logged in.
-      if session[:user_id]
+      if @user
         user = User.find(session[:user_id])
         UserMailer.order_receipt(user, order).deliver_later
       end
@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
       email: params[:stripeEmail],
       total_cents: cart_total,
       stripe_charge_id: stripe_charge.id, # returned by stripe
-      user_id: @user.id || nil
+      user_id: @user ? @user.id : nil
     )
     cart.each do |product_id, details|
       if product = Product.find_by(id: product_id)

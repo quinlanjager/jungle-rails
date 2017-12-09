@@ -1,4 +1,4 @@
-class Admin::ProductsController < SecureController
+class Admin::ProductsController < Admin::BaseController
 
   def index
     @products = Product.order(id: :desc).all

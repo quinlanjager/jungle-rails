@@ -1,4 +1,5 @@
-<h1>Your active orders</h1>
+<h1>Your Active Orders</h1>
+<hr/>
 <table class="table table-bordered">
   <tr>
     <th>Order Details</th>
@@ -12,13 +13,13 @@
           <%= order.id %>
         <% end %>
       </td>
+      <td>
+        <ul>
       <% order.line_items.each do |line_item| %>
-        <td>
-          <ul>
             <li><%= line_item.product.name %></li>
-          </ul>
-        </td>
       <% end %>
+        </ul>
+      </td>
       <td><%= humanized_money_with_symbol order.total %></td>
     </tr>
   <% end %>
