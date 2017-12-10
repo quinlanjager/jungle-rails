@@ -22,7 +22,13 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
           <dt>Average Rating </dt>
-          <dd><% @avg_rating.times { |i| %><span class="glyphicon glyphicon-star"></span><% } %></dd>
+          <dd>
+            <% if @avg_rating == 0 %>
+                N/A
+            <% else %>
+              <% @avg_rating.times { |i| %><span class="glyphicon glyphicon-star"></span><% } %>
+            <% end %>
+          </dd>
         </dl>
       </div>
     </div>
