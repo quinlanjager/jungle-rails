@@ -1,6 +1,8 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2. Used to learn more about working with Rails and contributing to an existing codebase.
+A mini e-commerce application built with Rails 4.2. Used to learn more about Rails and practice contributing to an existing codebase.
+
+The application allows users to create accounts, write reviews, and order items. In addition, Admin users can add new categories and create new products. 
 
 ## Screenshots
 
