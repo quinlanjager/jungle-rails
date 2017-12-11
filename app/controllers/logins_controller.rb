@@ -7,7 +7,8 @@ class LoginsController < AccountCreationAndLoginController
   # post route for logging in
   def create
     user_params = params.require(:user).permit(:email, :password)
-    @user = User.find_by(email: user_params[:email]).try(:authenticate, user_params[:password])
+
+    @user = User.authenticate_with_credentials(user_params[:email], params[:password])
 
     if user_params[:email].length == 0 or user_params[:password].length == 0
       @user = User.new

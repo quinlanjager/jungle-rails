@@ -14,13 +14,6 @@ class UsersController < AccountCreationAndLoginController
       return
     end
 
-    # if a user exists
-    if User.find_by(email: @user.email)
-      @user.errors.add :base, "Email is already in use."
-      render :show
-      return
-    end
-
     @user.save
     session[:user_id] = @user.id
     redirect_to "/", notice: "Account succesfully created, welcome!"
