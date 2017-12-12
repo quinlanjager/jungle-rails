@@ -19,6 +19,7 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     page.first('.actions').find_link('Details »').click
     sleep 2
     url = URI.parse(current_url).to_s
+    # get the product id from the URL. 
     expect(page).to have_text(Product.find(url.split('/').last).description)
     save_screenshot "description.png"
   end
