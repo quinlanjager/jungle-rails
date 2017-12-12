@@ -54,8 +54,13 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+end
+
 group :production do
-  gem 'pg'
   gem 'newrelic_rpm'
   gem 'rails_12factor'
 end
