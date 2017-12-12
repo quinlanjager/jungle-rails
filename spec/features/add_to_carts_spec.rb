@@ -15,6 +15,8 @@ RSpec.feature "AddToCarts", type: :feature do
   end
 
   scenario "They should see an item added to their cart" do
-
+    visit root_path
+    page.first(".actions").find('a:first').click
+    expect(page.find('a[href="/cart"]')).to have_content('My Cart (1)')
   end
 end
