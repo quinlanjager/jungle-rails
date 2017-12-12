@@ -33,7 +33,7 @@ class UsersController < AccountCreationAndLoginController
     # create and return a new user
     def create_user
       user_params = params.require(:user).permit(:first_name, :last_name, :email, :password)
-      user = User.new first_name: user_params[:first_name], last_name: user_params[:last_name], email: user_params[:email], password: ''
+      user = User.new first_name: user_params[:first_name], last_name: user_params[:last_name], email: user_params[:email].downcase, password: ''
       user.password = user_params[:password]
       user
     end
